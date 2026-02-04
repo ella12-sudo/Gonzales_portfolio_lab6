@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Portfolio</title>
+  <title>MyPortfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 
   <style>
     :root {
@@ -16,41 +18,53 @@
       --muted: #64748b;
     }
 
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 70px;
+    }
+
+
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background-color: var(--light);
       color: var(--dark);
+      margin: 0;
+      padding: 0;
     }
 
-    /* Navbar */
+
+    /* Navbar Glassmorphism */
     .navbar {
-      background-color: var(--dark);
+      background-color: rgba(15, 23, 42, 0.9) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 15px 0;
     }
 
-    .navbar-brand {
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
 
     .nav-link {
       color: #cbd5f5 !important;
-      margin-left: 10px;
+      margin-left: 15px;
+      transition: all 0.3s ease;
     }
+
 
     .nav-link:hover {
-      color: white !important;
+      color: #60a5fa !important;
     }
 
-    /* Hero */
+
+    /* Hero Section */
     .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
       color: white;
-      padding-top: 80px;
       overflow: hidden;
     }
+
 
     .hero-img {
       position: absolute;
@@ -61,88 +75,113 @@
       z-index: 1;
     }
 
+
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        rgba(15,23,42,0.85),
-        rgba(30,41,59,0.85)
-      );
+      background: linear-gradient(rgba(15,23,42,0.85), rgba(30,41,59,0.85));
       z-index: 2;
     }
+
 
     .hero .container {
       position: relative;
       z-index: 3;
     }
 
-    .hero h1 {
-      font-weight: 800;
+
+    .hero-profile-img {
+      border: 5px solid rgba(255,255,255,0.2) !important;
+      max-width: 300px;
+      border-radius: 50%;
     }
 
-    .hero p {
-      color: #cbd5f5;
-    }
 
-    /* Sections */
-    .section-padding {
-      padding: 80px 0;
-    }
-
+    /* Section Styling */
+    .section-padding { padding: 80px 0; }
+   
+    /* BLUE LINE STYLING HERE */
     .section-title {
       font-weight: 700;
       margin-bottom: 50px;
       text-align: center;
+      position: relative;
+      padding-bottom: 15px;
     }
 
-    /* Cards */
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+
+
     .card {
       border: none;
       border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
-      overflow: hidden;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       transition: transform 0.3s ease;
     }
 
-    .card:hover img {
-      transform: scale(1.05);
+
+    .card:hover { transform: translateY(-10px); }
+
+
+    /* Education Section Custom Style */
+    #education {
+      background-color: #f1f5f9;
+      background-image: radial-gradient(var(--primary) 0.5px, transparent 0.5px);
+      background-size: 30px 30px;
     }
 
-    /* Buttons */
-    .btn-primary {
-      background-color: var(--primary);
-      border: none;
+
+    .edu-card {
+      border-left: 6px solid var(--primary) !important;
+      background: white;
     }
 
-    .btn-primary:hover {
-      background-color: #1d4ed8;
-    }
 
-    /* Footer */
+    /* Footer - Fixed Visibility */
     footer {
-      background-color: var(--dark);
+      background-color: #1a1d23;
+      padding: 60px 0 40px 0;
       color: #cbd5f5;
+    }
+
+
+    .footer-links a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: opacity 0.3s;
+    }
+
+
+    .footer-links a:hover { opacity: 0.7; }
+
+
+    .copyright-text {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
   </style>
 </head>
 
+
 <body>
 
-<!-- Navigation -->
+
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">MyPortfolio</a>
+    <a class="navbar-brand fw-bold" href="#home">MyPortfolio</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -150,6 +189,8 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
@@ -157,120 +198,163 @@
   </div>
 </nav>
 
-<!-- Home -->
-<section id="home" class="hero">
-  <img src="image/background.jpg"
-    alt="Hero background"
-    class="hero-img"
-  >
-  <div class="hero-overlay"></div>
 
+<section id="home" class="hero">
+  <img src="image/background.jpg" alt="Background" class="hero-img">
+  <div class="hero-overlay"></div>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
-        <h1 class="display-4">Hi, I'm EJ Ella 👋</h1>
-        <p class="lead">Beginner Web Developer</p>
-        <a href="#projects" class="btn btn-primary btn-lg mt-3">View My Work</a>
+        <h1 class="display-3 fw-bold mb-3">Hi, I'm <span class="text-primary">EJ Ella</span> 👋</h1>
+        <p class="lead mb-4">Beginner Web Developer</p>
+        <a href="#projects" class="btn btn-primary btn-lg px-4">View My Work</a>
       </div>
-      <div class="col-md-6 text-center">
-        <img src="image/ejella.jpg"
-             class="img-fluid rounded-circle border border-light"
-             style="max-width:300px;"
-             alt="Profile">
+      <div class="col-md-6 text-center mt-5 mt-md-0">
+        <img src="image/ejella.jpg" class="img-fluid hero-profile-img" alt="Profile">
       </div>
     </div>
   </div>
 </section>
 
-<!-- Services -->
+
 <section id="services" class="section-padding bg-white">
   <div class="container">
     <h2 class="section-title">My Services</h2>
     <div class="row g-4 text-center">
-
       <div class="col-md-4">
         <div class="card p-4 h-100">
-          <img src="image/web-design.jpg" alt="Web Design">
-          <h4 class="mt-3">Web Design</h4>
-          <p>Clean and user-friendly website designs.</p>
+          <img src="image/web-design.jpg" class="card-img-top rounded mb-3" alt="Web Design" style="height: 200px; object-fit: cover;">
+          <h4>Web Design</h4>
+          <p class="text-muted">Clean and user-friendly website designs.</p>
         </div>
       </div>
-
       <div class="col-md-4">
         <div class="card p-4 h-100">
-          <img src="image/frontend-dev.jpg" alt="Frontend Development">
-          <h4 class="mt-3">Frontend Development</h4>
-          <p>Responsive layouts using Bootstrap.</p>
+          <img src="image/frontend-dev.jpg" class="card-img-top rounded mb-3" alt="Frontend" style="height: 200px; object-fit: cover;">
+          <h4>Frontend Dev</h4>
+          <p class="text-muted">Responsive layouts using Bootstrap.</p>
         </div>
       </div>
-
       <div class="col-md-4">
         <div class="card p-4 h-100">
-          <img src="image/student-projects.jpg" alt="Student Projects">
-          <h4 class="mt-3">Student Projects</h4>
-          <p>Beginner-friendly web applications.</p>
+          <img src="image/student-projects.jpg" class="card-img-top rounded mb-3" alt="Projects" style="height: 200px; object-fit: cover;">
+          <h4>Student Projects</h4>
+          <p class="text-muted">Beginner-friendly web applications.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- Projects -->
+
+<section id="certifications" class="section-padding bg-light">
+    <div class="container text-center">
+        <h2 class="section-title">Certifications</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <i class="bi bi-award fs-1 text-primary mb-3"></i>
+                    <h5>Web Development Basics</h5>
+                    <p class="text-muted">HTML, CSS, and Bootstrap fundamentals</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <i class="bi bi-shield-lock fs-1 text-primary mb-3"></i>
+                    <h5>Cybersecurity Intro</h5>
+                    <p class="text-muted">Basic security concepts and threats</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <i class="bi bi-patch-check fs-1 text-primary mb-3"></i>
+                    <h5>IT Fundamentals</h5>
+                    <p class="text-muted">Computer systems and networking basics</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="education" class="section-padding">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card edu-card p-4">
+          <h4 class="fw-bold mb-1">Bachelor of Science in Information Technology</h4>
+          <p class="text-primary fw-semibold mb-2">University / University of Mindanao</p>
+          <p class="text-muted mb-3">2024 – Present</p>
+          <p class="mb-0">Focused on web development, programming fundamentals, and information security concepts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section id="projects" class="section-padding bg-light">
   <div class="container">
     <h2 class="section-title">My Projects</h2>
-
-    <div class="row g-4 align-items-stretch justify-content-center">
-
-      <div class="col-md-5 col-lg-4">
-        <div class="card h-100 d-flex flex-column">
-          <img src="image/login-system.jpg" alt="Login System">
-          <div class="card-body flex-grow-1">
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-5">
+        <div class="card h-100">
+          <img src="image/login-system.jpg" class="card-img-top" alt="Login">
+          <div class="card-body text-center">
             <h5>Login System</h5>
-            <p>Simple login page.</p>
+            <p class="text-muted small">Simple login page.</p>
           </div>
         </div>
       </div>
-
-      <div class="col-md-5 col-lg-4">
-        <div class="card h-100 d-flex flex-column">
-          <img src="image/management-inventory.jpg" alt="Management Inventory">
-          <div class="card-body flex-grow-1">
-            <h5>Management Inventory and Customer Reservation System</h5>
-            <p>A project without image yet, coming soon!</p>
+      <div class="col-md-5">
+        <div class="card h-100">
+          <img src="image/management-inventory.jpg" class="card-img-top" alt="Inventory">
+          <div class="card-body text-center">
+            <h5>Inventory System</h5>
+            <p class="text-muted small">Management Inventory and Customer Reservation System!</p>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- Contact -->
+
 <section id="contact" class="section-padding bg-white">
   <div class="container">
     <h2 class="section-title">Contact Me</h2>
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form class="card p-4">
-          <input type="text" class="form-control mb-3" placeholder="Name" required>
-          <input type="email" class="form-control mb-3" placeholder="Email" required>
-          <textarea class="form-control mb-3" rows="4" placeholder="Message" required></textarea>
-          <button type="submit" class="btn btn-primary w-100">Send Message</button>
+      <div class="col-md-6 text-center">
+        <form class="card p-4 shadow-sm border">
+          <input type="text" class="form-control mb-3" placeholder="Your Name" required>
+          <input type="email" class="form-control mb-3" placeholder="Your Email" required>
+          <textarea class="form-control mb-3" rows="4" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Send Message</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="text-center py-4">
-  <p class="mb-0">© 2026 EJ Ella | All Rights Reserved</p>
+
+<footer class="text-center">
+  <div class="container">
+    <div class="footer-links mb-3">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-github"></i></a>
+      <a href="#"><i class="bi bi-linkedin"></i></a>
+      <a href="#"><i class="bi bi-envelope-at-fill"></i></a>
+    </div>
+    <p class="copyright-text">© 2026 EJ Ella | All Rights Reserved</p>
+  </div>
 </footer>
 
-<!-- Bootstrap JS -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>
+
+
